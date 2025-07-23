@@ -16,6 +16,7 @@ import java.util.concurrent.CompletableFuture
 import com.google.gson.JsonElement
 import com.google.gson.Gson
 import com.google.gson.JsonObject
+import org.javacs.kt.command.RELOAD_WORKSPACE
 
 class KotlinWorkspaceService(
     private val sf: SourceFiles,
@@ -49,6 +50,10 @@ class KotlinWorkspaceService(
                         listOf(TextEdit(range, kotlinCode))
                     )
                 )))))
+            }
+
+            RELOAD_WORKSPACE -> {
+               cp.refresh()
             }
         }
 

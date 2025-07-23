@@ -50,8 +50,9 @@ private fun ignoredPathPatterns(root: Path, gitignore: Path): List<PathMatcher> 
         } }
         ?: emptyList()
 
-/** Tries to create a classpath resolver from a file using as many sources as possible */
-private fun asClassPathProvider(path: Path): ClassPathResolver? =
-    MavenClassPathResolver.maybeCreate(path)
-        ?: GradleClassPathResolver.maybeCreate(path)
-        ?: ShellClassPathResolver.maybeCreate(path)
+    private fun asClassPathProvider(path: Path): ClassPathResolver? {
+        val mavenResolver = MavenClassPathResolver.maybeCreate(path)
+        val gradleResolver = GradleClassPathResolver.maybeCreate(path)
+        val shellResolver = ShellClassPathResolver.maybeCreate(path)
+        return mavenResolver ?: gradleResolver ?: shellResolver
+}

@@ -166,7 +166,7 @@ internal class CachedClassPathResolver(
     }
 
     private fun dependenciesChanged(): Boolean {
-        return (cachedClassPathMetadata?.buildFileVersion ?: 0) < wrapped.currentBuildFileVersion
+        return (cachedClassPathMetadata?.buildFileVersion ?: 0) < wrapped.currentBuildFileVersion || wrapped.classpath.size > 1
     }
 }
 

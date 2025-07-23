@@ -34,7 +34,6 @@ fun goToDefinition(
     cp: CompilerClassPath
 ): Location? {
     val (_, target) = file.referenceExpressionAtPoint(cursor) ?: return null
-
     LOG.info("Found declaration descriptor {}", target)
     var destination = location(target)
     val psi = target.findPsi()
