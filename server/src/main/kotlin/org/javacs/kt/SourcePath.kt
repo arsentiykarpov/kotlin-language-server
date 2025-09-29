@@ -267,22 +267,22 @@ class SourcePath(
      * Saves a file. This generates code for the file and deletes previously generated code for this file.
      */
     fun save(uri: URI) {
-        files[uri]?.let {
-            if (!it.isScript) {
-                // If the code generation fails for some reason, we generate code for the other files anyway
-                try {
-                    cp.compiler.removeGeneratedCode(listOfNotNull(it.lastSavedFile))
-                    it.module?.let { module ->
-                        it.compiledContext?.let { context ->
-                            cp.compiler.generateCode(module, context, listOfNotNull(it.compiledFile))
-                            it.lastSavedFile = it.compiledFile
-                        }
-                    }
-                } catch (ex: Exception) {
-                    LOG.printStackTrace(ex)
-                }
-            }
-        }
+//        files[uri]?.let {
+//            if (!it.isScript) {
+//                // If the code generation fails for some reason, we generate code for the other files anyway
+//                try {
+//                    cp.compiler.removeGeneratedCode(listOfNotNull(it.lastSavedFile))
+//                    it.module?.let { module ->
+//                        it.compiledContext?.let { context ->
+//                            cp.compiler.generateCode(module, context, listOfNotNull(it.compiledFile))
+//                            it.lastSavedFile = it.compiledFile
+//                        }
+//                    }
+//                } catch (ex: Exception) {
+//                    LOG.printStackTrace(ex)
+//                }
+//            }
+//        }
     }
 
     fun saveAllFiles() {
