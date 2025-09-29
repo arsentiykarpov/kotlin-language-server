@@ -30,3 +30,4 @@ node_modules
 *.vsix
 
 kls_database.db
+local.properties
